@@ -6,16 +6,16 @@ export default class ShoppingAlert extends React.Component
    {
 
     let ShoppingAlertButton = this.props.children
-                 ? <span data-toggle="modal" data-target="#exampleModalCenter">{this.props.children}</span>
-                 : <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                 ? <span data-toggle="modal" data-target={"#exampleModalCenter"+this.props.costum_key}>{this.props.children}</span>
+                 : <button type="button" className="btn btn-primary" data-toggle="modal" data-target={"#exampleModalCenter"+this.props.costum_key}>
                       {this.props.name ? this.props.name : "Show details"}
                    </button>
                  
     return <React.Fragment>
 
-      {ShoppingAlertButton}
+      <div>{ShoppingAlertButton}</div>
          
-      <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div className="modal fade" id={"exampleModalCenter"+this.props.costum_key} tabIndex="-1" role="dialog" aria-labelledby={"exampleModalCenterTitle"+this.props.costum_key} aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
 

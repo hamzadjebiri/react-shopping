@@ -17,7 +17,7 @@ export default class Description extends React.Component
     }
 
     render()
-    {        
+    {
         let description  = (this.props.description && this.props.MaxCharNumber && !this.state.ShowDetails ) ? this.props.description.slice(0,this.props.MaxCharNumber)+"..."
                                                   :  this.props.description
 
