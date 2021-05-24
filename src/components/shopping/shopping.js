@@ -1,11 +1,17 @@
-import ShoppingProductsContent from './shoppingComponents/ShoppingProductsContent'
+import React from 'react';
+
+// import ShoppingProductsContent from './shoppingComponents/ShoppingProductsContent'
+
 import ShoppingAside from './shoppingComponents/ShoppingAside'
 import ShoppingNavbar from './shoppingComponents/ShoppingNavbarComponents/ShoppingNavbar'
 import ShoppingOptions from './shoppingComponents/ShoppingOptions'
 import ThemeContext from './ThemeContext'
+import ShoppingSpinner from './materials/ShoppingSpinner'
 import '../.././css/shoppingProducts.css';
-import React from 'react';
 
+
+
+const ShoppingProductsContent = React.lazy(() => import('./shoppingComponents/ShoppingProductsContent'));
 
 
 class Shopping extends React.Component
@@ -52,9 +58,20 @@ class Shopping extends React.Component
       this.setState({SearchValue  : value})
     }
 
+     logTimes(id, phase, actualTime, baseTime, startTime, commitTime)
+     {
+      console.log(`${id}'s ${phase} phase:`);
+      console.log(`Actual time: ${actualTime}`);
+      console.log(`Base time: ${baseTime}`);
+      console.log(`Start time: ${startTime}`);
+      console.log(`Commit time: ${commitTime}`);
+    };
+
     render()
     {
      return <React.Fragment>
+
+            <React.Profiler id="StockChart" onRender={this.logTimes}>
 
 
               <ThemeContext.Provider value={this.state}>
@@ -73,19 +90,25 @@ class Shopping extends React.Component
 
                      <ShoppingAside onCategoryChange={this.handleCategoryValueChange}/>
 
-                     <div className="col-lg-9">
+                        <div className="col-lg-9">
 
-                        <ThemeContext.Provider value={this.state}>
-                          
-                          <ShoppingProductsContent category_value={this.state.category_value} SearchValue={this.state.SearchValue} />
+                           <React.Suspense fallback={<ShoppingSpinner />}>
 
-                        </ThemeContext.Provider>
-                        
-                     </div>
+                             <ThemeContext.Provider value={this.state}>
+
+                               <ShoppingProductsContent category_value={this.state.category_value} SearchValue={this.state.SearchValue} />
+
+                             </ThemeContext.Provider>
+
+                           </React.Suspense>
+
+                        </div>
 
                    </div>
 
                  </div>
+
+                 </React.Profiler>
 
              </React.Fragment>
     }

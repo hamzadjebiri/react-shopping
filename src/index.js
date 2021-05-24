@@ -4,6 +4,8 @@ import './index.css';
 import Shopping from './components/shopping/shopping';
 import reportWebVitals from './reportWebVitals';
 
+import ErrorBoundary from './components/ErrorBoundary'
+
 // import $ from 'jquery';
 // import Popper from 'popper.js';
 // import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -12,7 +14,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Shopping />
+    <ErrorBoundary>
+      <Shopping />
+     </ErrorBoundary>
+
   </React.StrictMode>,
   document.getElementById('root')
 );
