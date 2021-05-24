@@ -20,7 +20,7 @@ export default class ShoppingProductsList extends React.Component
 
                   <div className="row">
 
-                    {product_list.map((product,index) => <ShoppingProduct key={index} product={product} costum_key = {index} />)}
+                    {product_list.map((product,index) => <ShoppingProduct ChangeProductState={this.props.ChangeProductState} key={index} product={product} costum_key = {index} />)}
 
                   </div>
              
