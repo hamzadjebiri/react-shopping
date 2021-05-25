@@ -1,15 +1,11 @@
 import React from 'react';
-
-// import ShoppingProductsContent from './shoppingComponents/ShoppingProductsContent'
-
 import ShoppingAside from './shoppingComponents/ShoppingAside'
 import ShoppingNavbar from './shoppingComponents/ShoppingNavbarComponents/ShoppingNavbar'
+import ShoppingCart from './shoppingComponents/ShoppingNavbarComponents/ShoppingCart'
 import ShoppingOptions from './shoppingComponents/ShoppingOptions'
 import ThemeContext from './ThemeContext'
 import ShoppingSpinner from './materials/ShoppingSpinner'
 import '../.././css/shoppingProducts.css';
-
-
 
 const ShoppingProductsContent = React.lazy(() => import('./shoppingComponents/ShoppingProductsContent'));
 
@@ -75,8 +71,10 @@ class Shopping extends React.Component
 
 
               <ThemeContext.Provider value={this.state}>
+                
+                 {/*  testing Render Props feature */}
 
-                 <ShoppingNavbar />
+                 <ShoppingNavbar render = {<ShoppingCart title={<button className="btn btn-success text-light">Cart</button>}  />}/>
               
               </ThemeContext.Provider>
 

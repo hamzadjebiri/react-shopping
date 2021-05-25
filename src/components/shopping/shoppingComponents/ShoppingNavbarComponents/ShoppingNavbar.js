@@ -1,5 +1,4 @@
 import React from 'react'
-import ShoppingCart from './ShoppingCart'
 
 export default class ShoppingNavbar extends React.Component
 {
@@ -17,7 +16,9 @@ export default class ShoppingNavbar extends React.Component
                 <div className="collapse navbar-collapse my-2 my-lg-0" id="navbarSupportedContent">
 
                   <ul className="navbar-nav mr-auto" >
-                    <ShoppingCart title={<button className="btn btn-success text-light">Cart</button>}  />
+
+                     {this.props.render}
+                    
                   </ul>
                 
                 </div>
